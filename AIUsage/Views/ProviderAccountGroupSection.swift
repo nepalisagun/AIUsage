@@ -47,6 +47,9 @@ struct ProviderAccountGroupSection: View {
 
                 VStack(alignment: .trailing, spacing: 8) {
                     HStack(spacing: 8) {
+                        if let restriction = appState.providerCatalogItem(for: group.providerId)?.restriction(for: appState.language) {
+                            pill(text: restriction, tint: .orange)
+                        }
                         pill(
                             text: group.isScanningEnabled ? L("Scanning", "扫描中") : L("Paused", "已暂停"),
                             tint: group.isScanningEnabled ? .green : .orange

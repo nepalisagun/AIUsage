@@ -51,6 +51,35 @@ nonisolated func aiusageResolvedExecutable(named executable: String) -> String? 
     return nil
 }
 
+/// Codex CLI: prefer the user's own `codex`, then fall back to the official binary bundled with
+/// the ChatGPT desktop app or the OpenAI IDE extension, so signing in never requires a separate install.
+nonisolated func aiusageCodexExecutable() -> String? {
+    aiusageResolvedExecutable(named: "codex") ?? aiusageBundledCodexExecutables().first
+}
+
+nonisolated func aiusageBundledCodexExecutables() -> [String] {
+    let fileManager = FileManager.default
+    let home = fileManager.homeDirectoryForCurrentUser.path
+    var paths = ["/Applications", "\(home)/Applications"].map {
+        "\($0)/ChatGPT.app/Contents/Resources/codex-cli/bin/codex"
+    }
+
+    for editor in [".vscode", ".vscode-insiders", ".cursor", ".windsurf", ".antigravity", ".kiro"] {
+        let root = "\(home)/\(editor)/extensions"
+        guard let entries = try? fileManager.contentsOfDirectory(atPath: root) else { continue }
+        let newestFirst = entries
+            .filter { $0.hasPrefix("openai.chatgpt-") }
+            .sorted { $0.localizedStandardCompare($1) == .orderedDescending }
+        for entry in newestFirst {
+            let binRoot = "\(root)/\(entry)/bin"
+            let platforms = (try? fileManager.contentsOfDirectory(atPath: binRoot)) ?? []
+            paths += platforms.filter { $0.hasPrefix("macos") }.sorted().map { "\(binRoot)/\($0)/codex" }
+        }
+    }
+
+    return paths.filter { fileManager.isExecutableFile(atPath: $0) }
+}
+
 // MARK: - Internal
 
 nonisolated private func aiusageNvmNodeBinPaths(home: String) -> [String] {

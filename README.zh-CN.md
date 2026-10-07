@@ -103,7 +103,7 @@
 
 | 功能 | 说明 |
 | --- | --- |
-| **12+ AI 服务商** | Codex、Copilot、Cursor、Antigravity、Kiro、Warp、Gemini CLI、Droid、Claude Code、OpenCode、Kimi、MiniMax — 一个看板搞定 |
+| **12+ AI 服务商** | Codex、Copilot、Cursor、Antigravity、Kiro、Warp、Gemini CLI（Code Assist Standard / Enterprise）、Droid、Claude Code、OpenCode、Kimi、MiniMax — 一个看板搞定 |
 | **多账号管理** | 同一服务商多个账号独立刷新，一键切换 CLI 活跃账号 |
 | **用量统计** | 统一汇总 Claude/Codex 代理归档、仅统计 Token 的 Codex 非代理会话，以及 OpenCode 本地会话账本：按模型拆分费用与 Token，趋势曲线、多时段分析，可按来源聚合查看 |
 | **Claude Code 代理** | 用 Claude Code 跑 DeepSeek、GPT、Ollama 等任意 OpenAI 兼容模型；Anthropic 透传模式记录用量 |

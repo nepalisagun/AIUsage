@@ -103,6 +103,7 @@
 		A2B3C4F02F96001000A15674 /* SettingsView+Chrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4EF2F96001000A15674 /* SettingsView+Chrome.swift */; };
 		A2B3C4F02F9C001000A15674 /* ProxyViewModel+ProxyOnlyMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4EF2F9C001000A15674 /* ProxyViewModel+ProxyOnlyMode.swift */; };
 		A2B3C4F12F96001000A15699 /* ProviderLoginStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4F02F96001000A15699 /* ProviderLoginStatusCard.swift */; };
+		C1A0C0DE0000000000000001 /* ProviderConnectComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0C0DE0000000000000002 /* ProviderConnectComponents.swift */; };
 		A2B3C4F22F96001000A15674 /* SettingsView+Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4F12F96001000A15674 /* SettingsView+Titles.swift */; };
 		A2B3C4F32F96001000A15699 /* LoginPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4F22F96001000A15699 /* LoginPhase.swift */; };
 		A2B3C4F42F96001000A15674 /* SettingsView+QuotaPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3C4F32F96001000A15674 /* SettingsView+QuotaPreview.swift */; };
@@ -329,6 +330,7 @@
 		A2B3C4EF2F96001000A15674 /* SettingsView+Chrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+Chrome.swift"; sourceTree = "<group>"; };
 		A2B3C4EF2F9C001000A15674 /* ProxyViewModel+ProxyOnlyMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProxyViewModel+ProxyOnlyMode.swift"; sourceTree = "<group>"; };
 		A2B3C4F02F96001000A15699 /* ProviderLoginStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLoginStatusCard.swift; sourceTree = "<group>"; };
+		C1A0C0DE0000000000000002 /* ProviderConnectComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectComponents.swift; sourceTree = "<group>"; };
 		A2B3C4F12F96001000A15674 /* SettingsView+Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+Titles.swift"; sourceTree = "<group>"; };
 		A2B3C4F22F96001000A15699 /* LoginPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPhase.swift; sourceTree = "<group>"; };
 		A2B3C4F32F96001000A15674 /* SettingsView+QuotaPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+QuotaPreview.swift"; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				5EFAD7882F87B10200A15674 /* ProviderAccountEditorView.swift */,
 				A2B3C4D92F96001000A15674 /* ProviderAccountEditorView+Sections.swift */,
 				A2B3C4F02F96001000A15699 /* ProviderLoginStatusCard.swift */,
+				C1A0C0DE0000000000000002 /* ProviderConnectComponents.swift */,
 				A2B3C4DB2F96001000A15674 /* ProviderAccountEditorView+Actions.swift */,
 				5EFAD78C2F87B10400A15674 /* SavedAccountViews.swift */,
 				5EFAD78E2F87B10500A15674 /* AccountNoteEditorView.swift */,
@@ -1070,6 +1073,7 @@
 				A2B3C4F02F9C001000A15674 /* ProxyViewModel+ProxyOnlyMode.swift in Sources */,
 				A2B3C4DA2F96001000A15674 /* ProviderAccountEditorView+Sections.swift in Sources */,
 				A2B3C4F12F96001000A15699 /* ProviderLoginStatusCard.swift in Sources */,
+				C1A0C0DE0000000000000001 /* ProviderConnectComponents.swift in Sources */,
 				A2B3C4DC2F96001000A15674 /* ProviderAccountEditorView+Actions.swift in Sources */,
 				A2B3C4E02F96001000A15674 /* CostTrackingView+Types.swift in Sources */,
 				A2B3C4EA2F96001000A15674 /* CostTrackingView+Helpers.swift in Sources */,

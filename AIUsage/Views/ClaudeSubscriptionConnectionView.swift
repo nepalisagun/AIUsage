@@ -350,28 +350,7 @@ struct ClaudeSubscriptionConnectionView: View {
     // MARK: - Building blocks
 
     private func accountCard(email: String?, plan: String?, caption: String, checked: Bool = false) -> some View {
-        HStack(spacing: 12) {
-            ZStack {
-                Circle().fill(Color.orange.opacity(colorScheme == .dark ? 0.22 : 0.14))
-                Text(String((email ?? "C").prefix(1)).uppercased())
-                    .font(.headline).foregroundStyle(.orange)
-            }
-            .frame(width: 38, height: 38)
-            VStack(alignment: .leading, spacing: 3) {
-                HStack(spacing: 6) {
-                    Text(email ?? L("Claude account", "Claude 账号")).font(.headline).lineLimit(1).truncationMode(.middle)
-                    if let plan { GatewayQuietBadge(text: plan, tint: .orange) }
-                }
-                Text(caption).font(.caption).foregroundStyle(.secondary)
-            }
-            Spacer(minLength: 0)
-            if checked {
-                Image(systemName: "checkmark.circle.fill").font(.title3).foregroundStyle(.green)
-            }
-        }
-        .padding(14)
-        .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(AppSurface.card(colorScheme)))
-        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(AppStroke.card(colorScheme), lineWidth: 1))
+        ConnectAccountCard(title: email ?? L("Claude account", "Claude 账号"), plan: plan, caption: caption, tint: .orange, checked: checked)
     }
 
     private var privacyNote: some View {
@@ -387,39 +366,19 @@ struct ClaudeSubscriptionConnectionView: View {
     }
 
     private func progressRow(_ text: String) -> some View {
-        HStack(spacing: 10) {
-            ProgressView().controlSize(.small)
-            Text(text).foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, minHeight: 66, alignment: .leading)
+        ConnectProgressRow(text: text)
     }
 
     private func waitingCard(_ text: String) -> some View {
-        HStack(alignment: .top, spacing: 10) {
-            ProgressView().controlSize(.small).padding(.top, 1)
-            Text(text).font(.callout).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-        }
+        ConnectWaitingRow(text: text)
     }
 
     private func messageCard(icon: String, tint: Color, title: String, detail: String) -> some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: icon).font(.title2).foregroundStyle(tint).frame(width: 28)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title).font(.headline)
-                Text(detail).font(.callout).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-            }
-        }
+        ConnectMessageCard(icon: icon, tint: tint, title: title, detail: detail)
     }
 
     private func quotaRow(_ label: String, window: ClaudeSubscriptionSnapshot.Window) -> some View {
-        let remaining = max(0, min(100, 100 - window.usedPercent))
-        let tint: Color = remaining <= 12 ? .red : remaining <= 30 ? .orange : .green
-        return HStack(spacing: 10) {
-            Text(label).font(.callout).frame(width: 64, alignment: .leading)
-            ProgressView(value: remaining, total: 100).tint(tint)
-            Text(L("\(Int(remaining.rounded()))% left", "剩余 \(Int(remaining.rounded()))%"))
-                .font(.callout.monospacedDigit()).frame(width: 78, alignment: .trailing)
-        }
+        ConnectQuotaRow(label: label, remaining: 100 - window.usedPercent)
     }
 
     private func commandRow(_ directory: String) -> some View {

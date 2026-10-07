@@ -407,6 +407,10 @@ struct ProviderPickerView: View {
                         text: item.kind == .official ? L("Official", "官方") : L("Local", "本地"),
                         tint: item.kind == .official ? .secondary : .orange
                     )
+
+                    if let restriction = item.restriction(for: appState.language) {
+                        compactTag(text: restriction, tint: .orange)
+                    }
                 }
 
                 Text(item.summary(for: appState.language))
@@ -625,7 +629,12 @@ private struct SourceSelectionCard: View {
                         .lineLimit(2)
                         .frame(maxWidth: .infinity)
 
-                    pill(text: channelText, tint: accentColor)
+                    HStack(spacing: 4) {
+                        pill(text: channelText, tint: accentColor)
+                        if let restriction = item.restriction(for: language) {
+                            pill(text: restriction, tint: .orange)
+                        }
+                    }
                 }
             }
             .frame(maxWidth: .infinity, minHeight: 120, alignment: .top)

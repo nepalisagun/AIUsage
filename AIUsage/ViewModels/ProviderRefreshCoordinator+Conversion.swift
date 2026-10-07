@@ -453,7 +453,8 @@ extension ProviderRefreshCoordinator {
             "Team": "团队",
             "Business": "商业",
             "Enterprise": "企业",
-            "Edu": "教育"
+            "Edu": "教育",
+            "Google stopped serving Gemini CLI for personal Google accounts (free, Google AI Pro and Ultra) on June 18, 2026. Only Gemini Code Assist Standard or Enterprise licenses still work — track personal accounts with Antigravity instead.": "Google 已于 2026 年 6 月 18 日停止为个人 Google 账号（免费、Google AI Pro / Ultra）提供 Gemini CLI，只有 Gemini Code Assist Standard / Enterprise 许可仍可使用。个人账号请改用 Antigravity 查看额度。"
     ]
 
     nonisolated func localizedDynamicText(_ text: String, _ language: String) -> String {
