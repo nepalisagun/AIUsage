@@ -326,6 +326,7 @@ extension ProviderRefreshCoordinator {
             "Waiting for first sync": "等待首次同步",
             "Limits appear after your next Claude Code message.": "下一条 Claude Code 消息后显示额度。",
             "Limits reset": "额度已重置",
+            "Starts with next message": "下条消息开始计时",
             "Updates after your next Claude Code message.": "下一条 Claude Code 消息后更新。",
             "Last synced": "最近同步",
             "Synced": "已同步",

@@ -15,7 +15,7 @@ extension UsageNormalizer {
         base.fetchedAt = usage.fetchedAt.isEmpty ? nil : usage.fetchedAt
         base.windows = windows
         // 未过重置时间的快照仍然有效：只是近期没有 Code 消息确认。菜单栏与排序依赖这个值，
-        // 清空会让订阅在用户停用 Code 几分钟后从菜单栏消失。已重置的窗口不在 windows 里。
+        // 清空会让订阅在用户停用 Code 几分钟后从菜单栏消失。已重置的窗口以满额、无重置时间计入。
         base.remainingPercent = remaining
         base.nextResetAt = windows.compactMap(\.resetAt).sorted().first
         base.nextResetLabel = formatShortDateTime(base.nextResetAt)

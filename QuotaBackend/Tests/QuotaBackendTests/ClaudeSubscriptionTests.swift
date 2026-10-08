@@ -91,7 +91,7 @@ final class ClaudeSubscriptionTests: XCTestCase {
         XCTAssertThrowsError(try ClaudeSubscriptionStatusLine.snapshot(input: Data("{}".utf8), profile: profile))
     }
 
-    func testWaitingAndResetHaveNoFakeRemainingButStaleKeepsQuota() async throws {
+    func testWaitingHasNoFakeRemainingButStaleKeepsQuotaAndResetShowsFull() async throws {
         let (root, store, path) = try fixture()
         defer { try? FileManager.default.removeItem(at: root) }
         let profile = try ClaudeSubscriptionConnection(store: store).install(directory: path, name: "Personal", helperPath: "/tmp/helper")
@@ -112,8 +112,13 @@ final class ClaudeSubscriptionTests: XCTestCase {
         XCTAssertNil(stale.membershipLabel)
         try store.saveSnapshot(XCTUnwrap(ClaudeSubscriptionStatusLine.snapshot(input: input(used: 100, reset: Date().addingTimeInterval(-20), weekly: false), profile: profile)))
         let reset = UsageNormalizer.normalize(provider: provider, usage: try await provider.fetchUsage(with: credential))
-        XCTAssertTrue(reset.windows.isEmpty)
-        XCTAssertNil(reset.remainingPercent)
+        // 已重置的窗口显示满额且没有重置时间，不再从卡片上消失。
+        XCTAssertEqual(reset.windows.map(\.label), ["5h Window"])
+        XCTAssertEqual(reset.windows.first?.usedPercent, 0)
+        XCTAssertNil(reset.windows.first?.resetAt)
+        XCTAssertEqual(reset.windows.first?.note, "Starts with next message")
+        XCTAssertEqual(reset.remainingPercent, 100)
+        XCTAssertNil(reset.nextResetAt)
         XCTAssertEqual(reset.headline.primary, "Limits reset")
     }
 

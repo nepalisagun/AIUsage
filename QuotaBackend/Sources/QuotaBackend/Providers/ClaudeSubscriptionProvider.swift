@@ -45,8 +45,16 @@ public struct ClaudeSubscriptionProvider: CredentialAcceptingProvider {
         usage.fetchedAt = SharedFormatters.iso8601String(from: sample.observedAt)
         usage.extra["receivedAt"] = AnyCodable(SharedFormatters.iso8601String(from: sample.receivedAt))
         func window(_ value: ClaudeSubscriptionSnapshot.Window?) -> RawQuotaWindow? {
-            guard let value, value.resetAt > Date(), value.usedPercent.isFinite, (0...100).contains(value.usedPercent) else { return nil }
+            guard let value, value.usedPercent.isFinite, (0...100).contains(value.usedPercent) else { return nil }
             var result = RawQuotaWindow()
+            // 已过重置时间的窗口额度已回满，但新窗口要等下一条 Code 消息才开始计时；
+            // 显示满额而不是隐藏，避免用户以为 5h 窗口丢了。
+            guard value.resetAt > Date() else {
+                result.usedPercent = 0
+                result.remainingPercent = 100
+                result.resetDescription = "Starts with next message"
+                return result
+            }
             result.usedPercent = value.usedPercent
             result.remainingPercent = 100 - value.usedPercent
             result.resetAt = SharedFormatters.iso8601String(from: value.resetAt)
@@ -54,7 +62,8 @@ public struct ClaudeSubscriptionProvider: CredentialAcceptingProvider {
         }
         usage.primary = window(sample.fiveHour)
         usage.secondary = window(sample.sevenDay)
-        let state = usage.primary == nil && usage.secondary == nil ? "reset" : Date().timeIntervalSince(sample.observedAt) > 300 ? "stale" : "snapshot"
+        let live = [sample.fiveHour, sample.sevenDay].contains { ($0?.resetAt ?? .distantPast) > Date() }
+        let state = !live ? "reset" : Date().timeIntervalSince(sample.observedAt) > 300 ? "stale" : "snapshot"
         usage.extra["snapshotState"] = AnyCodable(state)
         return usage
     }
