@@ -35,13 +35,13 @@
 <table>
   <tr>
     <td width="132" align="center">
-      <a href="https://fluxionai.world/register?source=github&amp;campaign=github-aiusage&amp;promo=AIUSAGE"><img src="docs/images/fluxion-ai-logo.png" alt="Fluxion AI" width="88"></a><br>
-      <strong>Fluxion AI</strong>
+      <strong>Sidrune AI</strong>
     </td>
     <td>
-      Fluxion AI provides reliable, cost-efficient access to GPT, Claude, and other leading AI models through one unified API.<br>
-      Save up to 70% compared with official API pricing—and get $3 in API credits when you sign up through this link.<br>
-      <a href="https://fluxionai.world/register?source=github&amp;campaign=github-aiusage&amp;promo=AIUSAGE"><strong>Get $3 in API credits with Fluxion AI →</strong></a>
+      <a href="https://fluxionai.space/register?source=github&amp;campaign=github-sidrune-aiusage&amp;promo=SDRAIUSAGE"><img src="docs/images/sidrune-ai-banner.png" alt="Sidrune AI — One API. Every leading AI model. Sign up and get $3 credit." width="100%"></a><br>
+      One API for GPT, Claude, and other leading AI models.<br>
+      Sign up and get $3 in API credit. Promo: <code>SDRAIUSAGE</code>.<br>
+      <a href="https://fluxionai.space/register?source=github&amp;campaign=github-sidrune-aiusage&amp;promo=SDRAIUSAGE"><strong>Sign up with Sidrune AI →</strong></a>
     </td>
   </tr>
   <tr>

@@ -35,13 +35,13 @@
 <table>
   <tr>
     <td width="132" align="center">
-      <a href="https://fluxionai.world/register?source=github&amp;campaign=github-aiusage&amp;promo=AIUSAGE"><img src="docs/images/fluxion-ai-logo.png" alt="Fluxion AI" width="88"></a><br>
-      <strong>Fluxion AI</strong>
+      <strong>Sidrune AI</strong>
     </td>
     <td>
-      Fluxion AI 通过统一 API，提供可靠、高性价比的 GPT、Claude 及其他主流 AI 模型接入服务。<br>
-      相比官方 API 定价，最高可节省 70%；通过此链接注册，即可获赠 3 美元 API 额度。<br>
-      <a href="https://fluxionai.world/register?source=github&amp;campaign=github-aiusage&amp;promo=AIUSAGE"><strong>注册 Fluxion AI，领取 3 美元 API 额度 →</strong></a>
+      <a href="https://fluxionai.space/register?source=github&amp;campaign=github-sidrune-aiusage&amp;promo=SDRAIUSAGE"><img src="docs/images/sidrune-ai-banner.png" alt="Sidrune AI — 一套 API 接入主流 AI 模型，注册获赠 3 美元额度。" width="100%"></a><br>
+      一套 API，接入 GPT、Claude 及其他主流 AI 模型。<br>
+      新用户注册即获赠 3 美元 API 额度。活动代码：<code>SDRAIUSAGE</code>。<br>
+      <a href="https://fluxionai.space/register?source=github&amp;campaign=github-sidrune-aiusage&amp;promo=SDRAIUSAGE"><strong>注册 Sidrune AI →</strong></a>
     </td>
   </tr>
   <tr>
